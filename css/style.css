@@ -1,0 +1,22 @@
+.titulo{
+    font-size: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.caja{
+    border: 2px solid salmon;
+    margin: 1rem;
+    padding: 1rem;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.antiguobazar{
+    width: 100px;
+}
+
+.boton{
+    border-radius: 5px;
+    color: salmon;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+}
