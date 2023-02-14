@@ -12,8 +12,8 @@ class Producto {
 
 const comodadegrade = new Producto ( "Cómoda degradé", 10500, "img/comodadegrade.jpeg");
 const comodaverde = new Producto ( "Cómoda verde", 11500, "img/comodaverde.jpg");
-const mesitasazules = new Producto ( "Mesitas azules", 9500, "img/mesitasazul.jpeg");
-const mesitasverdes = new Producto ( "Mesitas verdes", 10500, "img/mesitasverde.jpg");
+const mesitasazules = new Producto ( "Mesas de luz azules", 9500, "img/mesitasazul.jpeg");
+const mesitasverdes = new Producto ( "Mesas de luz verdes", 10500, "img/mesitasverde.jpg");
 
 const arrayProductos = [comodadegrade, comodaverde, mesitasazules, mesitasverdes];
 
