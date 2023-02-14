@@ -1,5 +1,5 @@
 const nombreCliente = prompt("Ingrese su nombre:");
-console.log(`Bienvenido/a, ${nombreCliente}!`);
+console.log("Bienvenido/a, ${nombreCliente}!");
 alert ("¡Bienvenido/a a nuestra tienda online!")
 
 class Producto {
