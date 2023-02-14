@@ -2,15 +2,6 @@ const nombreCliente = prompt("Ingrese su nombre:");
 console.log(`Bienvenido/a, ${nombreCliente}!`);
 alert ("¡Bienvenido/a a nuestra tienda online!")
 
-const nombreProductoBuscado = prompt("Ingrese el nombre del producto que desea buscar: Cómoda degradé, Cómoda verde, Mesas de luz azules o Mesas de luz verdes");
-const productoBuscado = arrayProductos.find(producto => producto.nombre === nombreProductoBuscado);
-
-if (productoBuscado) {
-  console.log("Encontré el producto:", productoBuscado);
-} else {
-  console.log("No encontré el producto buscado.");
-}
-
 class Producto {
     constructor (nombre, precio, url){
         this.nombre = nombre;
@@ -37,6 +28,14 @@ arrayProductos.forEach (producto => {
                    <button class = "boton"> Agregar al carrito </button>`;
 
                    contenedorProductos.appendChild(div);
-
 })
+
+const nombreProductoBuscado = prompt("Ingrese el nombre del producto que desea buscar: Cómoda degradé, Cómoda verde, Mesas de luz azules o Mesas de luz verdes");
+const productoBuscado = arrayProductos.find(producto => producto.nombre === nombreProductoBuscado);
+
+if (productoBuscado) {
+  console.log("Encontré el producto:", productoBuscado);
+} else {
+  console.log("No encontré el producto buscado.");
+}
 
