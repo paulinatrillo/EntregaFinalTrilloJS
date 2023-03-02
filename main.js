@@ -23,6 +23,10 @@ console.log (arrayProductos);
 
 let carrito = [];
 
+if (localStorage.getItem("carrito")){
+  carrito = JSON.parse(localStorage.getItem ("carrito"));
+}
+
 const contenedorProductos = document.getElementById ("contenedorProductos");
 
 const mostrarProductos = () => {
@@ -55,6 +59,7 @@ const agregarAlCarrito = (id) => {
     carrito.push (producto);
   }
   calcularTotal();
+  localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
 const contenedorCarrito = document.getElementById ("contenedorCarrito");
@@ -94,6 +99,7 @@ const eliminarDelCarrito = (id) => {
     carrito.splice(indice, 1);
   }
   mostrarCarrito();
+  localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
 const total = document.getElementById("total");
@@ -115,9 +121,8 @@ vaciarCarrito.addEventListener("click", ()=>{
 const eliminarTodoElCarrito = () =>{
   carrito =[];
   mostrarCarrito();
+  localStorage.clear();
 }
-
-
 
 const nombreProductoBuscado = prompt("Ingrese el nombre del producto que desea buscar: Cómoda degradé, Cómoda verde, Mesas de luz azules o Mesas de luz verdes");
 const productoBuscado = arrayProductos.find(producto => producto.nombre === nombreProductoBuscado);
@@ -125,6 +130,6 @@ const productoBuscado = arrayProductos.find(producto => producto.nombre === nomb
 if (productoBuscado) {
   console.log("Encontré el producto:", productoBuscado);
 } else {
-  console.log("No encontré el producto buscado!");
+  console.log("No encontré el producto buscado");
 }
 
