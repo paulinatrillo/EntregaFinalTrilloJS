@@ -125,6 +125,6 @@ const productoBuscado = arrayProductos.find(producto => producto.nombre === nomb
 if (productoBuscado) {
   console.log("Encontré el producto:", productoBuscado);
 } else {
-  console.log("No encontré el producto buscado.");
+  console.log("No encontré el producto buscado!");
 }
 
