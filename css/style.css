@@ -1,5 +1,14 @@
+.titulos{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 35px;
+}  
+.titulosdos{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+}
+
 .titulo{
-    font-size: 15px;
+    font-size: 17px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .caja{
@@ -14,9 +23,15 @@
     width: 100px;
 }
 
-.boton{
+.btn{
     border-radius: 5px;
+    margin: 8px;
     color: salmon;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 15px;
+}
+
+.btn:hover{
+    background-color: salmon;
+    color: black;
 }
