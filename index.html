@@ -10,16 +10,37 @@
 <body>
     <h1 class="titulos">Antiguo Bazar:</h1>
 
+ <form id="login-form">
+        <label class="titulosdos" for="username">Usuario:</label>
+        <input type="text" id="username" name="username"><br>
+      
+        <label class="titulosdos" for="password">Contraseña:</label>
+        <input type="password" id="password" name="password"><br>
+      
+        <button class = "btn" type="submit">Ingresar</button>
+      </form>
+
+<h2 class="titulos">Carrito de compras: </h2>
+
 <div id="contenedorProductos"></div>
 
+
 <hr>
-<h2 class="titulos">Carrito de compras: </h2>
 <h3 class="titulosdos">El total de la compra es de: <span id="total"></span></h3>
 <button class="btn" id="verCarrito">Ver carrito</button>
 <button class="btn" id="vaciarCarrito">Vaciar carrito</button>
 
 <div id="contenedorCarrito"></div>
 
+<form>
+    <label class="titulosdos" for="metodo-pago">Método de pago:</label>
+    <select class="titulosdos"  id="metodo-pago" name="metodo-pago">
+      <option class="titulosdos" value="tarjeta-credito">Tarjeta de crédito</option>
+      <option  class="titulosdos" value="paypal">Paypal</option>
+      <option class="titulosdos" value="transferencia">Transferencia bancaria</option>
+    </select>
+    <button  class="btn" type="submit">Finalizar compra</button>
+  </form>
 
 <script src="main.js"></script>
 </body>

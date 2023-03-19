@@ -1,6 +1,25 @@
-const nombreCliente = prompt("Ingrese su nombre:");
-console.log(`Bienvenido/a, ${nombreCliente}!`);
-alert ("¡Bienvenido/a a nuestra tienda online!")
+const usuarios = {
+  "usuario1": "contraseña1",
+  "usuario2": "contraseña2",
+  "usuario3": "contraseña3",
+};
+
+const loginForm = document.getElementById("login-form");
+loginForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  if (usuarios[username] && usuarios[username] === password) {
+    console.log(`Bienvenido/a, ${username}!`);
+    alert("¡Bienvenido/a a nuestra tienda online!");
+    loginForm.reset();
+    mostrarProductos();
+  } else {
+    alert("Nombre de usuario o contraseña incorrectos");
+  }
+});
 
 class Producto {
     constructor (id, nombre, precio, url){
@@ -30,25 +49,60 @@ if (localStorage.getItem("carrito")){
 const contenedorProductos = document.getElementById ("contenedorProductos");
 
 const mostrarProductos = () => {
-arrayProductos.forEach (producto => {
- const div = document.createElement ("div");
- div.className = "caja";
- div.innerHTML =  `<p class = "titulo"> Nombre: ${producto.nombre} </p> 
-                   <p class = "titulo"> Precio: ${producto.precio} </p> 
-                   <img class = "antiguobazar" src = "${producto.url}">
-                   <button class = "btn" id="boton${producto.id}"> Agregar al carrito </button>`;
+  arrayProductos.forEach((producto) => {
+    const div = document.createElement("div");
+    div.className = "caja";
+    div.innerHTML = `<p class="titulo">Nombre: ${producto.nombre}</p> 
+                   <p class="titulo">Precio: $${producto.precio}</p> 
+                   <img class="antiguobazar" src="${producto.url}">
+                   <div>
+                     <button class="btn" id="restar${producto.id}" disabled>-</button>
+                     <span class="cantidad" id="cantidad${producto.id}">1</span>
+                     <button class="btn" id="sumar${producto.id}">+</button>
+                   </div>
+                   <button class="btn agregar-carrito" id="boton${producto.id}">Agregar al carrito</button>`;
 
-                   contenedorProductos.appendChild(div);
+    contenedorProductos.appendChild(div);
 
-    const boton = document.getElementById(`boton${producto.id}`);
-    boton.addEventListener("click", () => {
-    agregarAlCarrito(producto.id);
+    const botonAgregar = document.getElementById(`boton${producto.id}`);
+    botonAgregar.addEventListener("click", () => {
+      agregarAlCarrito(producto.id);
+    });
 
-    })
-})
-}
+    const botonSumar = document.getElementById(`sumar${producto.id}`);
+    botonSumar.addEventListener("click", () => {
+      aumentarCantidad(producto.id);
+    });
+
+    const botonRestar = document.getElementById(`restar${producto.id}`);
+    botonRestar.addEventListener("click", () => {
+      disminuirCantidad(producto.id);
+    });
+  });
+};
 
 mostrarProductos();
+
+const aumentarCantidad = (id) => {
+  const spanCantidad = document.getElementById(`cantidad${id}`);
+  const valorCantidad = parseInt(spanCantidad.textContent);
+  spanCantidad.textContent = valorCantidad + 1;
+
+  const botonRestar = document.getElementById(`restar${id}`);
+  botonRestar.disabled = false;
+};
+
+const disminuirCantidad = (id) => {
+  const spanCantidad = document.getElementById(`cantidad${id}`);
+  const valorCantidad = parseInt(spanCantidad.textContent);
+  if (valorCantidad > 1) {
+    spanCantidad.textContent = valorCantidad - 1;
+  } else {
+    spanCantidad.textContent = 1;
+    const botonRestar = document.getElementById(`restar${id}`);
+    botonRestar.disabled = true;
+  }
+};
 
 const agregarAlCarrito = (id) => {
   const productoEnCarrito = carrito.find (producto => producto.id === id);
@@ -122,14 +176,5 @@ const eliminarTodoElCarrito = () =>{
   carrito =[];
   mostrarCarrito();
   localStorage.clear();
-}
-
-const nombreProductoBuscado = prompt("Ingrese el nombre del producto que desea buscar: Cómoda degradé, Cómoda verde, Mesas de luz azules o Mesas de luz verdes");
-const productoBuscado = arrayProductos.find(producto => producto.nombre === nombreProductoBuscado);
-
-if (productoBuscado) {
-  console.log("Encontré el producto:", productoBuscado);
-} else {
-  console.log("No encontré el producto buscado");
 }
 
